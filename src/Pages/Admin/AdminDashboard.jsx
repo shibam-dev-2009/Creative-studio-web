@@ -4,6 +4,7 @@ import './AdminDashboard.css';
 import API_BASE_URL from '../../api';
 
 const AdminDashboard = () => {
+  const API_BASE_URL = "https://creative-studio-backend.onrender.com";
   const [formData, setFormData] = useState({ title: '', class: '', subject: '', type: '' });
   const [file, setFile] = useState(null);
   const [notes, setNotes] = useState([]);
