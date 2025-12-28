@@ -1,0 +1,30 @@
+.hero-buttons{
+    display: flex;
+    gap: 1rem;
+}
+.hero-buttons :first-child:hover{
+    background:linear-gradient(rgba(0, 128, 0, 0.664), rgba(0, 0, 0, 0.822));
+}
+
+.hero{
+    background-color: rgb(228, 228, 228);
+    padding: 30px 20px;
+    border-radius: 10px;
+    
+    margin-top: 10px;
+}
+.hero h1{
+    margin: 0;
+}
+
+.offer{
+    display: flex;
+    width: 100%;
+    padding: 0px 10px;
+    align-items: center;
+    margin: 10px 0px;
+}
+.offer img{
+    height: 30px;
+    width: auto;
+}

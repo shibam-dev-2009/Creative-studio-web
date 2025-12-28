@@ -1,0 +1,38 @@
+.whatwedo{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    
+    gap: 20px;
+    overflow-x: scroll;
+    
+}   
+.whatwedo div{
+    height: 300px;
+    width: auto;
+    min-width: 200px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(238, 238, 238);
+    
+    cursor: pointer;
+}
+
+.whatwedo div:hover{
+    
+    background-color: rgba(209, 209, 209, 0.438);
+    transition: 1s;
+}
+.whatwedo div img{
+    height: 30px;
+    width: auto;
+    
+}
+
+@media (max-width:700px) {
+    .whatwedo{
+        flex-direction: column;
+        overflow: visible;
+    }
+}

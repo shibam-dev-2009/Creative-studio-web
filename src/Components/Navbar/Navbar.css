@@ -1,0 +1,133 @@
+.nav {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+
+  border: 1px solid rgba(175, 175, 175, 0.164);
+  border-radius: 10px;
+
+  position:fixed;
+  top: 10px;          /* ✅ use top instead of margin */
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(10px);
+  width: 89%; /* responsive */
+  
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.116);
+  background: rgba(255, 255, 255, 0.411);
+  z-index: 999;
+}
+@media (max-width:700px) {
+  .nav{
+    width: 90%;
+  }
+}
+.navbar {
+  position: sticky;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+  font-weight: 500;
+  list-style: none;
+}
+.nav-links li{
+  padding: 5px 15px;
+  border-radius: 10px;
+  
+}
+.nav-links li:hover{
+  background-color: rgb(228, 228, 228);
+  color: white;
+  
+  transition:.5s ease;
+}
+.nav-links li a {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+.nav img {
+  height: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+.menu-icon {
+  width: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.close-icon {
+  width: 12px;
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  align-self: flex-end;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+/* Popover */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  overflow-y: scroll;
+}
+
+.popover {
+  width: 260px;
+  height: 100%;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: slide 0.3s ease;
+}
+
+.social-media {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.social {
+  height: 20px;
+  display: flex;
+}
+
+
+@keyframes slide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-links,
+  .menu-icon {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav img {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+  }
+}
