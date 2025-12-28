@@ -1,12 +1,12 @@
 import { useState } from "react";
 import './AdminLogin.css'
-import API_BASE_URL from "../../api";
+
+const API_BASE_URL = "https://creative-studio-backend.onrender.com";
 function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const login = async () => {
-    const API_BASE_URL = "https://creative-studio-backend.onrender.com";
     const res = await fetch(`${API_BASE_URL}/api/admin/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
