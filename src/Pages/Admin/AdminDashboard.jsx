@@ -11,7 +11,7 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(false);   // For Upload/Delete actions
   const [fetching, setFetching] = useState(true); // For initial data fetch
 
-  const API_URL = 'http://localhost:5000/api/notes';
+  const API_URL = `${API_BASE_URL}/api/notes`;
   const token = localStorage.getItem('token');
 
   useEffect(() => {
