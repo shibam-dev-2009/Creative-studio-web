@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import assets from '../../assets/assets';
 import './Learn.css';
-import API_BASE_URL from '../../api';
+
 
 // 1. Define your backend URL (Ensure this matches your Render URL)
 const API_BASE_URL = "https://creative-studio-backend.onrender.com";
