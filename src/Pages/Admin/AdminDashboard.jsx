@@ -57,17 +57,28 @@ const AdminDashboard = () => {
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Delete this note?")) return;
-    setLoading(true);
-    try {
-      await axios.delete(`${API_URL}/${id}`);
-      setNotes(notes.filter(n => n._id !== id));
-    } catch (err) {
-      alert("Delete failed");
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (!window.confirm("Are you sure you want to delete this note?")) return;
+
+  setLoading(true); // Show the "Processing Request..." overlay
+  try {
+    const token = localStorage.getItem('token'); // Get the saved admin token
+    
+    await axios.delete(`${API_URL}/${id}`, {
+      headers: { 
+        'Authorization': `Bearer ${token}` 
+      }
+    });
+
+    // Update the UI by filtering out the deleted note
+    setNotes(notes.filter(note => note._id !== id));
+    alert("Deleted successfully!");
+  } catch (err) {
+    console.error("Delete failed", err);
+    alert("Delete failed: " + (err.response?.data?.message || "Check your connection"));
+  } finally {
+    setLoading(false); // Hide the overlay
+  }
+};
 
   return (
     <div className="admin-container">
