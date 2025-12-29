@@ -37,20 +37,9 @@ function Footer() {
         <Link to="/legal/cookie-policy">Cookie Policy</Link>
         <Link to="/legal/refund-return Policy">Refund Return Policy</Link>
       </div>
-      <div className="secondColumn">
-        <h1>Legal</h1>
-        <Link to="/legal/privacy-policy">Privacy Policy</Link>
-        <Link to="/legal/terms-and-conditions">Terms & Conditions</Link>
-        <Link to="/legal/cookie-policy">Cookie Policy</Link>
-        <Link to="/legal/refund-return Policy">Refund Return Policy</Link>
-      </div>
-      <div className="secondColumn">
-        <h1>Legal</h1>
-        <Link to="/legal/privacy-policy">Privacy Policy</Link>
-        <Link to="/legal/terms-and-conditions">Terms & Conditions</Link>
-        <Link to="/legal/cookie-policy">Cookie Policy</Link>
-        <Link to="/legal/refund-return Policy">Refund Return Policy</Link>
-      </div>
+      <p>© 2025 Creative Studio. All rights reserved. Made with art and code.</p>
+      
+     
     </div>
   );
 }

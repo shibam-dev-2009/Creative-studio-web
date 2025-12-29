@@ -16,6 +16,7 @@ import AdminDashboard from "./Pages/Admin/AdminDashboard";
 
 import './App.css'
 import Footer from "./Components/Footer/Footer";
+import ScrollToTop from "./Components/Scrolltotop/Scrolltotop";
 function App() {
   const [appLoading, setAppLoading] = useState(true);
 
@@ -42,7 +43,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Navbar />
-        
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/work" element={<Work />} />

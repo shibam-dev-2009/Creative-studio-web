@@ -7,6 +7,7 @@ import compassdrafting from "../assets/compassdrafting.svg";
 import palette from "../assets/palette.svg";
 import youtube from "../assets/youtube.svg";
 import facebook from "../assets/facebook.svg";
+import arrowup from "../assets/arrow-up.svg";
 
 const assets = {
   giftbox,
@@ -17,7 +18,8 @@ const assets = {
   compassdrafting,
   palette,
   youtube,
-  facebook
+  facebook,
+  arrowup
 };
 
 export default assets;
