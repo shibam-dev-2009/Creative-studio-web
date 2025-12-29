@@ -67,7 +67,7 @@ function Learn() {
                 
                 {/* 3. Update the PDF link to use the live backend URL */}
                 <a 
-                  href={`${API_BASE_URL}/${note.filePath}`} 
+                  href={`{note.filePath}`} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="view-btn"
