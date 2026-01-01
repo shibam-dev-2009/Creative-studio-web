@@ -1,5 +1,5 @@
 import React from 'react';
-import './Fileview.css';
+import './FileViewer.css';
 
 const FileViewer = ({ fileUrl, onClose }) => {
   if (!fileUrl) return null;
@@ -10,14 +10,9 @@ const FileViewer = ({ fileUrl, onClose }) => {
     <div className="viewer-overlay" onClick={onClose}>
       <div className="viewer-content" onClick={(e) => e.stopPropagation()}>
         <button className="close-btn" onClick={onClose}>&times;</button>
-        
         <div className="viewer-body">
           {isPDF ? (
-            <iframe 
-              src={fileUrl} 
-              title="PDF Document" 
-              className="pdf-frame"
-            />
+            <iframe src={fileUrl} title="Document" className="pdf-frame" />
           ) : (
             <img src={fileUrl} alt="Preview" className="img-preview" />
           )}

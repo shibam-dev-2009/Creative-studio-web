@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Fileview from '../Fileview/Fileview'; // Import your new file
+import assets from '../../assets/assets';
+import FileViewer from './FileViewer';
 import './Learn.css';
 
 const API_BASE_URL = "https://creative-studio-backend.onrender.com";
@@ -19,25 +20,55 @@ function Learn() {
 
   return (
     <div className="learn-page">
-      {/* ... search and header ... */}
-
-      <div className="container">
-        {notes.map(note => (
-          <div key={note._id} className="note-card">
-            <h3>{note.title}</h3>
-            {/* Click button to open the separate file viewer */}
-            <button onClick={() => setSelectedFile(note.filePath)} className="view-btn">
-              Open File
-            </button>
-          </div>
-        ))}
+      <div className="header">
+        <h1>Free Books & PDFs</h1>
+        <p>Access high-quality study materials and handwritten notes.</p>
       </div>
 
-      {/* USE THE SEPARATE FILE COMPONENT HERE */}
-      <Fileview
-        fileUrl={selectedFile} 
-        onClose={() => setSelectedFile(null)} 
-      />
+      <div className="container">
+        {loading ? (
+           <p>Loading...</p>
+        ) : (
+          <div className="notes-grid">
+            {notes.map((note) => {
+              const isImage = note.filePath.match(/\.(jpeg|jpg|gif|png)$/i);
+              
+              return (
+                <div key={note._id} className="note-card">
+                  {/* SMALL VIEW / THUMBNAIL AREA */}
+                  <div className="card-preview">
+                    {isImage ? (
+                      <img src={note.filePath} alt="thumb" />
+                    ) : (
+                      <div className="pdf-placeholder">
+                        <span className="pdf-icon">PDF</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* TITLE & INFO FORMAT */}
+                  <div className="card-info">
+                    <span className="note-tag">{note.type}</span>
+                    <h3>{note.title}</h3>
+                    <p className="subject-text">{note.subject}</p>
+                    <div className="card-footer">
+                      <span className="class-badge">Class {note.class}</span>
+                      <button 
+                        onClick={() => setSelectedFile(note.filePath)} 
+                        className="open-btn"
+                      >
+                        View
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      <FileViewer fileUrl={selectedFile} onClose={() => setSelectedFile(null)} />
     </div>
   );
 }
