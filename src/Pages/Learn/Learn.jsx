@@ -3,8 +3,7 @@ import axios from 'axios';
 import assets from '../../assets/assets';
 import './Learn.css';
 
-
-// 1. Define your backend URL (Ensure this matches your Render URL)
+// 1. Define your backend URL
 const API_BASE_URL = "https://creative-studio-backend.onrender.com";
 
 function Learn() {
@@ -15,7 +14,6 @@ function Learn() {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        // 2. Use the live API URL instead of localhost
         const res = await axios.get(`${API_BASE_URL}/api/notes`);
         setNotes(res.data);
       } catch (err) {
@@ -33,7 +31,7 @@ function Learn() {
   );
 
   return (
-    <div>
+    <div className="learn-page">
       <div className="header">
         <h1>Free book and pdf</h1>
         <p>Access high-quality study materials, handwritten notes, and PYQs for free.</p>
@@ -48,7 +46,7 @@ function Learn() {
         <img src={assets.search} alt="search" className='searchBtn'/>
       </div>
 
-      <h1>Notes/Books</h1>
+      <h2 className="section-title">Notes/Books</h2>
 
       {loading ? (
         <div className="loader-container">
@@ -60,24 +58,33 @@ function Learn() {
           {filteredNotes.length > 0 ? (
             filteredNotes.map((note) => (
               <div key={note._id} className="note-card">
-                <h3>{note.title}</h3>
-                <p><strong>Subject:</strong> {note.subject}</p>
-                <p><strong>Class:</strong> {note.class}</p>
-                <span className="badge success">{note.type}</span>
+                {/* 2. Fix Image Preview Logic */}
+                {note.filePath && note.filePath.match(/\.(jpeg|jpg|gif|png)$/i) && (
+                   <div className="card-image">
+                     <img src={note.filePath} alt={note.title} className="note-preview-img" />
+                   </div>
+                )}
                 
-                {/* 3. Update the PDF link to use the live backend URL */}
-                <a 
-                  href={`{note.filePath}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="view-btn"
-                >
-                  View PDF
-                </a>
+                <div className="card-content">
+                  <h3>{note.title}</h3>
+                  <p><strong>Subject:</strong> {note.subject}</p>
+                  <p><strong>Class:</strong> {note.class}</p>
+                  <span className="badge success">{note.type}</span>
+                  
+                  {/* 3. FIXED: Corrected href syntax */}
+                  <a 
+                    href={note.filePath} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="view-btn"
+                  >
+                    {note.filePath.match(/\.pdf$/i) ? "View PDF" : "View Image"}
+                  </a>
+                </div>
               </div>
             ))
           ) : (
-            <p>No notes found.</p>
+            <p className="no-results">No notes found.</p>
           )}
         </div>
       )}
