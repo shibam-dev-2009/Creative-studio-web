@@ -1,5 +1,5 @@
 import React from 'react';
-import './FileViewer.css';
+import './Fileview.css';
 
 const FileViewer = ({ fileUrl, onClose }) => {
   if (!fileUrl) return null;
@@ -7,24 +7,28 @@ const FileViewer = ({ fileUrl, onClose }) => {
   const isPDF = fileUrl.toLowerCase().endsWith('.pdf');
 
   return (
-    <div className="viewer-overlay" onClick={onClose}>
-      <div className="viewer-content" onClick={(e) => e.stopPropagation()}>
-        <div className="viewer-header">
-           <span>File Preview</span>
-           <button className="close-btn" onClick={onClose}>&times;</button>
-        </div>
-        
-        <div className="viewer-body">
-          {isPDF ? (
-            <iframe 
-              src={`${fileUrl}#toolbar=0`} 
-              title="PDF Viewer" 
-              className="pdf-frame" 
-            />
-          ) : (
-            <img src={fileUrl} alt="Full view" className="img-full" />
-          )}
-        </div>
+    <div className="file-view-page">
+      {/* Page Header / Navbar */}
+      <div className="viewer-navbar">
+        <button className="back-btn" onClick={onClose}>
+          ← Back to Library
+        </button>
+        <span className="viewer-title">Reader Mode</span>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="viewer-main-content">
+        {isPDF ? (
+          <iframe 
+            src={`${fileUrl}#toolbar=0`} 
+            title="PDF Reader" 
+            className="full-page-iframe"
+          />
+        ) : (
+          <div className="image-scroll-container">
+            <img src={fileUrl} alt="Document View" className="full-view-img" />
+          </div>
+        )}
       </div>
     </div>
   );
