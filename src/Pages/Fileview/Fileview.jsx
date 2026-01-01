@@ -9,12 +9,20 @@ const FileViewer = ({ fileUrl, onClose }) => {
   return (
     <div className="viewer-overlay" onClick={onClose}>
       <div className="viewer-content" onClick={(e) => e.stopPropagation()}>
-        <button className="close-btn" onClick={onClose}>&times;</button>
+        <div className="viewer-header">
+           <span>File Preview</span>
+           <button className="close-btn" onClick={onClose}>&times;</button>
+        </div>
+        
         <div className="viewer-body">
           {isPDF ? (
-            <iframe src={fileUrl} title="Document" className="pdf-frame" />
+            <iframe 
+              src={`${fileUrl}#toolbar=0`} 
+              title="PDF Viewer" 
+              className="pdf-frame" 
+            />
           ) : (
-            <img src={fileUrl} alt="Preview" className="img-preview" />
+            <img src={fileUrl} alt="Full view" className="img-full" />
           )}
         </div>
       </div>
